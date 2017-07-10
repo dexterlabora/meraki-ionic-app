@@ -1,0 +1,82 @@
+// http://ionicframework.com/docs/v2/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+.md, .ios {
+  ion-navbar {
+    background-color:map-get($colors, primary);
+  }
+
+  ion-title {
+    color: #fff
+  }
+
+  ion-label {
+    color: map-get($colors, secondary);
+  }
+
+  ion-card-header {
+    color: map-get($colors, primary);
+
+  }
+
+  ion-card {
+    background: #f9f9ff;
+    h2 {
+      color: map-get($colors, secondary);
+    }
+
+
+  }
+
+  ion-badge {
+    background-color:map-get($colors, secondary);
+  }
+
+
+}
+
+
+/*
+.ion-navbar {
+  color:"primary";
+}
+
+.toolbar-background {
+  background-color: #2ec95c;
+}
+
+.title-md {
+  color: #fff;
+}
+
+.sub-item {
+  background-color: #f1f1f1 !important;
+  color: #000000;
+}
+
+.badge-md {
+    border-radius: 4px;
+    color: #fff;
+    background-color: "primary";
+}
+
+.label-md {
+  color: blue;
+}
+
+*/
+

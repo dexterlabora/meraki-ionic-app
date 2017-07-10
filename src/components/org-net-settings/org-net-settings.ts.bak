@@ -1,0 +1,82 @@
+// Sets Global Organization and Network settings
+
+import { Component } from '@angular/core';
+import { MerakiService } from '../../services/meraki.service';
+import { LoadingController } from 'ionic-angular';
+
+
+
+@Component({
+  selector: 'org-net-settings',
+  templateUrl: 'org-net-settings.html'
+})
+export class OrgNetSettings {
+
+  // Org/Net selectors
+  orgs: Array<{id: string, name: string}>;
+  nets: Array<{id: string, name: string}>;
+  org: {id: string, name: string};
+  net: {id: string, name: string};
+
+
+
+
+  constructor(public merakiService: MerakiService, public loading: LoadingController) {
+    this.merakiService.getOrgs().subscribe(data => {
+      this.orgs = data;
+      console.log("org-net-settings: this.orgs: ",this.orgs);
+    });
+
+    this.merakiService.getCurrentOrg().subscribe(data => {
+      this.org = data;
+      console.log("home page: getCurrentOrg().subscribe: this.org ",this.org);
+
+      // get networks after current org is determined
+      this.merakiService.getNets(this.org.id).subscribe(data => {
+        this.nets = data;
+        console.log("org-net-settings: this.nets: ",this.nets);
+      });
+
+      this.merakiService.getCurrentNet().subscribe(data => {
+        this.net = data;
+        console.log("home page getCurrentNet().subscribe: this.net",this.net);
+      });
+
+    });
+  }
+
+  ionViewLoaded() {
+  let loader = this.loading.create({
+    content: 'Getting latest entries...',
+  });
+}
+
+  orgFormSelected(newOrg){
+    let selectedOrg = this.orgs.find((o)=>{
+       return o.id === newOrg;
+     });
+     console.log("orgFormSelected selectedOrg = ",selectedOrg);
+     this.org=selectedOrg;
+
+     // Set Current Organization
+     this.merakiService.setCurrentOrg(this.org);
+
+     // Once an organization is selected, get the related networks.
+     this.merakiService.getNets(this.org.id).subscribe(data => {
+       this.nets = data;
+       console.log("org-net-settings: this.nets: ",this.nets);
+     });
+  }
+
+  netFormSelected(newNet){
+    let selectedNet = this.nets.find((n)=>{
+       return n.id === newNet;
+     });
+     console.log("netFormSelected selectedOrg = ",selectedNet);
+     this.net=selectedNet;
+
+     // Set Current Organization
+     this.merakiService.setCurrentNet(this.net);
+  }
+
+}

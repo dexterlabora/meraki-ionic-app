@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Devices</ion-title>
+    {{net.name}}
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list padding>
+    <h2>Device List</h2>
+    <button ion-item *ngFor="let device of devices" (click)="itemTapped($event, device)">
+      <ion-icon name="wifi" item-left></ion-icon>
+      {{device.name}}
+      <div class="item-note" item-right>
+        {{device.model}}
+        {{device.mac}}
+      </div>
+    </button>
+  </ion-list>
+
+</ion-content>
+
+<ion-content>
+     <ion-fab right bottom>
+         <button ion-fab color="secondary" (click)="addDevice()"><ion-icon name="add"></ion-icon></button>
+     </ion-fab>
+</ion-content>

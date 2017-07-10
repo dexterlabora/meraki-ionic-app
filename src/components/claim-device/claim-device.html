@@ -1,0 +1,35 @@
+
+
+
+
+
+
+<!--
+    <ion-label color="primary">From Inventory</ion-label>
+
+    <ion-select col-9 [ngModel]="filteredDevices?.serial" (ngModelChange)="orgDeviceSelected($event)" class="myCustomSelect">
+     <ion-option *ngFor="let d of filteredDevices" [value]="d?.serial" [selected]="d?.serial == device?.serial">{{d.model}} : {{d.serial}} </ion-option>
+    </ion-select>
+-->
+
+<ion-label color="primary">Serial Number</ion-label>
+<ion-input placeholder="xxxx-xxxx-xxxx" [(ngModel)]="serial"></ion-input>
+
+<button ion-button color="secondary" center (click)="scan($event)">
+  <ion-icon name="barcode" ></ion-icon><br>
+
+</button>
+
+
+
+<button ion-button color="primary" (click)="claim($event)">
+  Add to Network
+</button>
+
+<ion-label color="primary">Available Devices</ion-label>
+<ion-searchbar [(ngModel)]="searchTerm" (ionInput)="setFilteredOrgs()"></ion-searchbar>
+
+
+    <button ion-button  color="light" *ngFor="let d of filteredDevices" (click)="itemTapped($event, d)">
+        {{d.model}} : {{d.serial}}
+    </button>

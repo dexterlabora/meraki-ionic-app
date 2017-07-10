@@ -1,0 +1,98 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Traffic Analysis</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+<ion-card>
+  <ion-item>
+    <ion-label color="secondary">Time Span</ion-label>
+    <ion-select col-9 [(ngModel)]="timespan" (ngModelChange)="refreshCharts($event)">
+      <ion-option [value]="7200">2 Hours</ion-option>
+      <ion-option [value]="14400">4 Hours</ion-option>
+      <ion-option [value]="28800">8 Hours</ion-option>
+      <ion-option [value]="86400">1 Day</ion-option>
+      <ion-option [value]="604800">7 Days</ion-option>
+      <ion-option [value]="2592000">30 Days</ion-option>
+  </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label color="secondary" ># Results</ion-label>
+    <ion-select col-9 [(ngModel)]="filter" (ngModelChange)="refreshCharts($event)">
+      <ion-option [value]=5>5</ion-option>
+      <ion-option [value]=10>10</ion-option>
+      <ion-option [value]=50>50</ion-option>
+      <ion-option [value]=100>100</ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label >Chart Legend</ion-label>
+    <ion-toggle [(ngModel)]="legend" pulsado (ngModelChange)="toggleLegend($event)"></ion-toggle>
+  </ion-item>
+</ion-card>
+<ion-card>
+  <ion-card-header>
+    Received Data in MB    <i>top {{filter}} results</i>
+  </ion-card-header>
+  <ion-card-content>
+    <canvas #appReceivedCanvas></canvas>
+  </ion-card-content>
+</ion-card>
+<ion-card>
+  <ion-card-header>
+    Sent Data in MB     <i>top {{filter}} results</i>
+  </ion-card-header>
+  <ion-card-content>
+    <canvas #appSentCanvas></canvas>
+  </ion-card-content>
+</ion-card>
+
+
+<h2>All Traffic</h2>
+<ion-card *ngFor="let app of traffic">
+  <ion-card-header>
+    {{app.application}}
+  </ion-card-header>
+  <ion-card-content>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-label>Destination</ion-label>
+          {{app.destination}}
+        </ion-col>
+        <ion-col>
+          <ion-label>Sent / Received</ion-label>
+          {{this.Math.floor(app.sent/1024)}}MB / {{this.Math.floor(app.recv/1024)}}MB
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-label>Protocol</ion-label>
+          {{app.protocol}}
+        </ion-col>
+        <ion-col>
+          <ion-label>Flows</ion-label>
+          {{app.flows}}
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-label>Active Time</ion-label>
+          {{app.activeTime}}
+        </ion-col>
+        <ion-col>
+          <ion-label>Clients Total</ion-label>
+          {{app.numClients}}
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card-content>
+</ion-card>
+
+
+</ion-content>

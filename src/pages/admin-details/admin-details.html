@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+
+    <ion-title>{{admin.name}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+
+<ion-content>
+
+  <ion-list>
+    <ion-item>
+      <ion-icon name="card" item-left></ion-icon>
+      Name
+      <div class="item-note" item-right>
+        {{admin.name}}
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="cog" item-left></ion-icon>
+      Email
+      <div class="item-note" item-right>
+        {{admin.email}}
+      </div>
+    </ion-item>
+  
+  </ion-list>
+
+
+</ion-content>

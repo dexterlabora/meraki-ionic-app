@@ -1,0 +1,16 @@
+
+      <ion-list>
+        <ion-item>
+          <ion-label>Org</ion-label>
+          <ion-select col-9 [ngModel]="org?.id" (ngModelChange)="orgFormSelected($event)" class="myCustomSelect">
+           <ion-option *ngFor="let o of orgs" [value]="o?.id" [selected]="o?.id == org?.id">{{o.name}}</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>Net</ion-label>
+          <ion-select col-9 [ngModel]="net?.id" (ngModelChange)="netFormSelected($event)" class="myCustomSelect">
+          <ion-option *ngIf="spinnerOn"><ion-spinner ></ion-spinner></ion-option>
+           <ion-option *ngFor="let n of nets" [value]="n?.id" [selected]="n?.id == net?.id">{{n.name}}</ion-option>
+         </ion-select>
+        </ion-item>
+      </ion-list>

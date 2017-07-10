@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>List</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <div>
+      <h2>Org {{org.id}} - {{org.name}}</h2>
+
+    </div>
+
+    <button ion-item *ngFor="let net of nets" menuToggle (click)="itemTapped($event, net)">
+      <ion-icon [name]="net.icon" item-left></ion-icon>
+      {{net.name}}
+      <div class="item-note" item-right>
+        {{net.id}}
+      </div>
+    </button>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,41 @@
+<ion-menu [content]="content" >
+  <ion-header>
+    <ion-toolbar>
+      <org-net-settings></org-net-settings>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <ion-list-header>
+        Standard Tools
+      </ion-list-header>
+      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+        <ion-icon color="dark" name={{p.icon}}></ion-icon>
+        {{p.title}}
+      </button>
+    </ion-list>
+    <ion-list>
+      <ion-list-header>
+        Custom Tools
+      </ion-list-header>
+      <button menuClose ion-item *ngFor="let t of tools" (click)="openPage(t)">
+        <ion-icon color="dark" name={{t.icon}}></ion-icon>
+        {{t.title}}
+      </button>
+    </ion-list>
+    <ion-list>
+      <ion-list-header>
+        Resources
+      </ion-list-header>
+      <button menuClose ion-item *ngFor="let r of resources" (click)="openPage(r)">
+        <ion-icon color="dark" name={{r.icon}}></ion-icon>
+        {{r.title}}
+      </button>
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

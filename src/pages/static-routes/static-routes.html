@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Static Routes</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+
+
+  <ion-list>
+    <button ion-item  (click)="itemTapped($event, route)">
+
+      <ion-icon name="route" item-left></ion-icon>
+      {{route?.name}}
+      <div class="item-note" item-right>
+        {{route?.subnet}}
+        {{route?.gatewayIp}}
+      </div>
+    </button>
+  </ion-list>
+</ion-content>

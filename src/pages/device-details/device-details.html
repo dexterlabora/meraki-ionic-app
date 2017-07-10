@@ -1,0 +1,96 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+
+    <ion-title>{{device.name}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+
+<ion-content>
+
+  <ion-list>
+    <ion-item>
+      <ion-icon name="card" item-left></ion-icon>
+      Name
+      <div class="item-note" item-right>
+        {{device.name}}
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="cog" item-left></ion-icon>
+      Model
+      <div class="item-note" item-right>
+        {{device.model}}
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="finger-print" item-left></ion-icon>
+      Serial
+      <div class="item-note" item-right>
+        {{device.serial}}
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="map" item-left></ion-icon>
+      Address
+      <div class="item-note" item-right>
+        {{device.address}}
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="pin" item-left></ion-icon>
+      Location
+      <div class="item-note" item-right>
+        {{device.lat}}:{{device.lng}}
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="arrow-dropright" item-left></ion-icon>
+      WAN 1 IP
+      <div class="item-note" item-right>
+        {{device.wan1Ip}}
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="arrow-dropright" item-left></ion-icon>
+      WAN 2 IP
+      <div class="item-note" item-right>
+        {{device.wan2Ip}}
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="arrow-dropright" item-left></ion-icon>
+      LAN IP
+      <div class="item-note" item-right>
+        {{device.lanIp}}
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="arrow-dropright" item-left></ion-icon>
+      MAC
+      <div class="item-note" item-right>
+        {{device.mac}}
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="pricetag" item-left></ion-icon>
+      Tags
+      <div class="item-note" item-right>
+        {{device.tags}}
+      </div>
+    </ion-item>
+    <ion-item>
+      
+      Network ID
+      <div class="item-note" item-right>
+        {{device.networkId}}
+      </div>
+    </ion-item>
+  </ion-list>
+
+
+</ion-content>

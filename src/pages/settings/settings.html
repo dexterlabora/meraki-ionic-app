@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Settings</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <h2>Server Settings</h2>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-icon name="link" item-left></ion-icon>
+          <input [(ngModel)]="url" placeholder="https://dashboard.meraki.com"/>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="key" item-left></ion-icon>
+          <input  [(ngModel)]="apiKey" placeholder="1234YourApiKey1234"/>
+        </ion-item>
+        <ion-item>
+          <button ion-button round color="secondary" (click)="saveSettings($event)">Save</button>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      <h2>How it works</h2>
+    </ion-card-header>
+    <ion-card-content>
+      <p>
+        The app will use an API endpoint to interact with the Meraki Dasbhoard. If using Meraki directly,
+        use https://dashboard.meraki.com/api/vo and enter your API key. For any calls that require adds, changes or deletes,
+        it is best to use the dashoard link associated with your organization. For instance, the URL will include
+        a number instead of dashboard: http://n123.meraki.com/api/v0. This simply avoids issues enountered when Meraki
+        redirects the client to the correct "shard", which is represented by the number.
+      </p>
+      <p>
+        The other option is to use your own API endpoint or proxy service. This may be preferred for security or
+        performance reasons. In that case, an API key is only required if that service requires it.
+      </p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

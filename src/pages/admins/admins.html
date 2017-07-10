@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Admins</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+    <button ion-item *ngFor="let admin of admins" (click)="itemTapped($event, admin)">
+      <ion-icon name="person" item-left></ion-icon>
+      {{admin.name}}
+      <div class="item-note" item-right>
+        {{admin.email}}
+        {{admin.access}}
+      </div>
+    </button>
+  </ion-list>
+</ion-content>

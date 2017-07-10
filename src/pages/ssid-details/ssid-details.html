@@ -1,0 +1,197 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ssid.name}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+
+<ion-content>
+
+  <ion-list>
+    <ion-item>
+      <ion-icon name="power" item-left></ion-icon>
+      <ion-label>Enabled</ion-label>
+      <div class="item-note" item-right>
+        <ion-toggle [(ngModel)]="ssid.enabled" pulsado (ngModelChange)="toggleEnabled($event)"></ion-toggle>
+      </div>
+    </ion-item>
+    <ion-card>
+      <ion-card-header>
+        Identity
+      </ion-card-header>
+      <ion-item>
+        <ion-icon name="pricetag" item-left></ion-icon>
+        <h2>Name</h2>
+        <p>
+          {{ssid.name}}
+        </p>
+        <button (click)="updateName($event)" ion-button item-right>
+          <ion-icon name="create"></ion-icon>
+        </button>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="pricetags" item-left></ion-icon>
+        <h2>Tags</h2>
+        <p>
+          {{ssid.tags}}
+        </p>
+        <button (click)="updateTags($event)" ion-button item-right>
+          <ion-icon name="create"></ion-icon>
+        </button>
+      </ion-item>
+
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        Authentication
+      </ion-card-header>
+      <ion-item >
+        <ion-icon name="lock" item-left></ion-icon>
+        <h2>Auth Mode</h2>
+        <p>{{ssid.authMode}}</p>
+        <button (click)="updateAuth($event)" ion-button item-right>
+          <ion-icon name="create"></ion-icon>
+        </button>
+      </ion-item>
+      <ion-item  *ngIf="ssid.authMode == 'psk'">
+        <ion-icon name="key" item-left></ion-icon>
+        <h2>PSK</h2>
+        <p>
+          <i>hidden</i>
+        </p>
+        <button (click)="updatePsk($event)" ion-button item-right>
+          <ion-icon name="create"></ion-icon>
+        </button>
+      </ion-item>
+      <ion-item *ngIf="ssid.authMode == 'psk'">
+        <ion-icon name="lock" item-left></ion-icon>
+        <h2>Encryption Mode</h2>
+        <p>
+          {{ssid.encryptionMode}}
+        </p>
+      </ion-item>
+    </ion-card>
+    <ion-card>
+      <ion-card-header>
+        IP Addressing
+      </ion-card-header>
+      <ion-item>
+        <ion-icon name="cog" item-left></ion-icon>
+        <h2>IP Assignment</h2>
+        <p>
+          {{ssid.ipAssignmentMode}}
+        </p>
+        <button (click)="updateIpAssignmentMode()" ion-button item-right>
+          <ion-icon name="create"></ion-icon>
+        </button>
+      </ion-item>
+      <ion-item *ngIf="ssid.ipAssignmentMode == 'Bridge mode'">
+        <ion-icon name="pricetag" item-left></ion-icon>
+        <ion-label>Vlan Tagging</ion-label>
+          <ion-toggle [(ngModel)]="ssid.useVlanTagging" pulsado (ngModelChange)="toggleVlanTagging($event)" item-right></ion-toggle>
+      </ion-item>
+      <ion-item *ngIf="ssid.useVlanTagging">
+        <ion-icon name="pricetag" item-left></ion-icon>
+        <h2>Default VLAN ID</h2>
+        <p>
+          {{ssid.defaultVlanId}}
+        </p>
+        <button (click)="updateDefaultVlanId($event)"  ion-button item-right>
+          <ion-icon name="create"></ion-icon>
+        </button>
+      </ion-item>
+    </ion-card>
+    <ion-card>
+      <ion-card-header>
+        Radio Settings
+      </ion-card-header>
+      <ion-item text-wrap>
+        <ion-icon name="stats" item-left></ion-icon>
+        Band Selection
+        <p>
+          {{ssid.bandSelection}}
+        </p>
+        <button (click)="updateBandSelection($event)"  ion-button item-right>
+          <ion-icon name="create"></ion-icon>
+        </button>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="stats" item-left></ion-icon>
+        Min Bitrate
+        <p>
+          {{ssid.minBitrate}}
+        </p>
+        <button (click)="updateMinBitrate($event)"  ion-button item-right>
+            <ion-icon name="create"></ion-icon>
+        </button>
+      </ion-item>
+    </ion-card>
+    <ion-card>
+      <ion-card-header>
+        Traffic Shaping
+      </ion-card-header>
+      <ion-item>
+        <ion-icon name="speedometer" item-left></ion-icon>
+        Client Bandwidth Limit Down
+        <p>
+          {{ssid.perClientBandwidthLimitDown}}
+        </p>
+        <button disabled (click)="updateBandwidthLimitDown($event)"  ion-button item-right>
+          <ion-icon name="create"></ion-icon>
+        </button>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="speedometer" item-left></ion-icon>
+        Client Bandwidth Limit Up
+        <p>
+          {{ssid.perClientBandwidthLimitup}}
+        </p>
+        <button disabled (click)="updateBandwidthLimitDown($event)"  ion-button item-right>
+          <ion-icon name="create"></ion-icon>
+        </button>
+      </ion-item>
+    </ion-card>
+    <ion-card>
+      <ion-card-header>
+        Captive Portal
+      </ion-card-header>
+      <ion-item text-wrap>
+        <ion-icon name="browsers" item-left></ion-icon>
+        Splash Page
+        <p>
+          {{ssid.splashPage}}
+        </p>
+        <button disabled (click)="updateCaptivePortal($event)"  ion-button item-right>
+          <ion-icon name="create"></ion-icon>
+        </button>
+      </ion-item>
+    </ion-card>
+    <ion-card>
+      <ion-card-header>
+        Admin Access
+      </ion-card-header>
+      <ion-item>
+        <ion-icon name="key" item-left></ion-icon>
+        SSID Admin Access
+        <p>
+          {{ssid.ssidAdminAccessible}}
+        </p>
+        <button disabled (click)="updateAdminAccess($event)"  ion-button item-right>
+          <ion-icon name="create"></ion-icon>
+        </button>
+      </ion-item>
+    </ion-card>
+
+  </ion-list>
+
+
+
+
+
+
+</ion-content>

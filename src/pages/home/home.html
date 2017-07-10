@@ -1,0 +1,103 @@
+<ion-header >
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Meraki API Demo</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="loadSettings()">
+        <ion-icon name="settings"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+
+  <ion-card>
+    <ion-card-header>
+      Organization Overview
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-label>{{org?.name}}</ion-label>
+             <i>{{org?.id}}</i>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+        <ion-col>
+        <ion-label>Inventory</ion-label>
+          <ion-badge>{{inventory?.length}}</ion-badge>
+        </ion-col>
+        <ion-col>
+        <ion-label>Networks</ion-label>
+          <ion-badge>{{nets?.length}}</ion-badge>
+        </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+
+  <ion-card>
+    <ion-card-header>
+      Network Overview
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-label>{{net?.name}}</ion-label>
+             <i>{{net?.id}}</i>
+          </ion-col>
+          <ion-col>
+            <ion-label>Type</ion-label>
+            <ion-badge>{{net?.type}}</ion-badge>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-label>Network Tags</ion-label>
+            <ion-badge>{{net?.tags}}</ion-badge>
+          </ion-col>
+          <ion-col>
+            <ion-label>Time Zone</ion-label>
+            <ion-badge>{{net?.timeZone}}</ion-badge>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+  </ion-card-content>
+
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      License
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-label>Status</ion-label>
+            <ion-icon color='primary' name="thumbs-up" *ngIf="license?.status == 'OK'">
+              </ion-icon>
+            <ion-icon color='danger' name="thumbs-down" *ngIf="license?.status != 'OK'">
+            </ion-icon>
+          </ion-col>
+          <ion-col>
+            <ion-label>Expiration Date</ion-label>
+            <p>{{license?.expirationDate}}</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+  <!--
+    <button ion-button secondary menuToggle>Toggle Menu</button>
+  -->
+
+{{baseUrl}}
+</ion-content>

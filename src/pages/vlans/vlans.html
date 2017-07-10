@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>VLANs</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+    <button ion-item *ngFor="let vlan of vlans" (click)="itemTapped($event, vlan)">
+      <ion-icon name="pricetag" item-left></ion-icon>
+      {{vlan.name}}
+      <div class="item-note" item-right>
+        {{vlan.number}}
+      </div>
+    </button>
+  </ion-list>
+</ion-content>

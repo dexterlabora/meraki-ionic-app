@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Licenses</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-header>
+      License Status
+    </ion-card-header>
+
+
+    <ion-item>
+      <ion-icon name="pulse" item-left></ion-icon>
+      Status
+      <ion-badge item-right>{{license?.status}}</ion-badge>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="clock" item-left></ion-icon>
+      Expiration Date
+      <ion-badge item-right>{{license?.expirationDate}}</ion-badge>
+    </ion-item>
+
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      License Count
+    </ion-card-header>
+      <ion-list>
+        <ion-item ion-item ion-item *ngFor="let i of merakiService.keys(deviceCounts)">
+          {{i}}
+        <div class="item-note" item-right>
+          {{deviceCounts[i]}}
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+</ion-content>

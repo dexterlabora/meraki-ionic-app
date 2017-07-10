@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>SSIDs</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+    <button ion-item *ngFor="let ssid of ssids" (click)="itemTapped($event, ssid)">
+      <ion-icon name="wifi" item-left></ion-icon>
+      {{ssid.name}}
+      <div class="item-note" item-right>
+        {{ssid.number}}
+      </div>
+    </button>
+  </ion-list>
+</ion-content>
