@@ -59,12 +59,16 @@ export class MerakiService{
 
         storage.get('baseUrl').then((val) => {
           console.log('settings storage: baseUrl', val);
-          this.setUrl(val);
+          if(val){
+            this.setUrl(val);
+          }
         });
 
         storage.get('apiKey').then((val) => {
             console.log('settings storage: apiKey', val);
-            this.setApiKey(val);
+            if(val){
+              this.setApiKey(val);
+            }
 
             if(this.apiKey){
               this.headers.append('x-cisco-meraki-api-key', this.apiKey);

@@ -17,7 +17,7 @@
       <ion-list>
         <ion-item>
           <ion-icon name="link" item-left></ion-icon>
-          <input [(ngModel)]="url" placeholder="https://dashboard.meraki.com"/>
+          <input [(ngModel)]="url" placeholder="https://dashboard.meraki.com/api/v0"/>
         </ion-item>
         <ion-item>
           <ion-icon name="key" item-left></ion-icon>
@@ -35,9 +35,9 @@
     </ion-card-header>
     <ion-card-content>
       <p>
-        The app will use an API endpoint to interact with the Meraki Dasbhoard. If using Meraki directly,
-        use https://dashboard.meraki.com/api/vo and enter your API key. For any calls that require adds, changes or deletes,
-        it is best to use the dashoard link associated with your organization. For instance, the URL will include
+        The app will use an API endpoint to interact with the Meraki Dashboard. If using Meraki directly,
+        use https://dashboard.meraki.com/api/v0 and enter your API key. For any calls that require adds, changes or deletes,
+        it is best to use the dashboard link associated with your organization. For instance, the URL will include
         a number instead of dashboard: http://n123.meraki.com/api/v0. This simply avoids issues enountered when Meraki
         redirects the client to the correct "shard", which is represented by the number.
       </p>
