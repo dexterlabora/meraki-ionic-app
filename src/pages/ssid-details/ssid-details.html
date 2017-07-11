@@ -12,13 +12,13 @@
 <ion-content>
 
   <ion-list>
+    <ion-card>
     <ion-item>
       <ion-icon name="power" item-left></ion-icon>
       <ion-label>Enabled</ion-label>
-      <div class="item-note" item-right>
-        <ion-toggle [(ngModel)]="ssid.enabled" pulsado (ngModelChange)="toggleEnabled($event)"></ion-toggle>
-      </div>
+        <ion-toggle item-right [(ngModel)]="ssid.enabled" pulsado (ngModelChange)="toggleEnabled($event)"></ion-toggle>
     </ion-item>
+    </ion-card>
     <ion-card>
       <ion-card-header>
         Identity

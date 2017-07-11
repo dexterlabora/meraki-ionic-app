@@ -12,13 +12,41 @@ The application is written with Ionic 2, which is an open-source mobile framewor
 * NodeJS v6~
 Install via Package manager
 https://nodejs.org/en/download/package-manager/
-* ionic
+* Ionic
 ```
 npm install -g ionic cordova
 ```
 You may need to add “sudo” in front of these commands to install the utilities globally
 
+### Install 
+```
+git clone https://github.com/dexterlabora/meraki-ionic-app.git
+cd meraki-ionic-app
+npm install
+```
+
+### Run 
+* Development in Browser
+```
+ionic serve
+```
+A browser will likely open to http://localhost:8100
+
+* Development on Mobile with Ionic View
+```
+ionic upload
+```
+Use the Mobile Ionic View app to test your application.
+https://view.ionic.io/
+
+
+**Note:**
+The Meraki API prevents cross site scripting by implementing CORS. The mobile app will work fine, but the browser environment will not return any results (404 error).
+
+Use an API proxy like API Umbrella or Apigee.
+
 * Meraki Dashboard account
+
 
 
 # Current Progress
